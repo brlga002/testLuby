@@ -1,0 +1,70 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: travellist
+    container_name: academico-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    links:
+      - db
+    networks:
+      - travellist
+
+  db:
+    image: mysql:latest
+    restart: always
+    container_name: academico_mysql
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: academico
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker-compose/mysql:/var/lib/mysql
+    networks:
+      - travellist
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: academico_pma
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      PMA_USER: root
+      PMA_PASSWORD: root
+    restart: always
+    ports:
+      - 7778:80
+    networks:
+      - travellist
+
+  nginx:
+    image: nginx:alpine
+    container_name: academico-serve
+    links:
+      - db
+    restart: unless-stopped
+    ports:
+      - 7777:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - travellist
+
+networks:
+  travellist:
+    driver: bridge

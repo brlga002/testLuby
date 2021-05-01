@@ -3,7 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+# .env não deve ser versionado, porem para acelerar a apresentação do teste de software sera versionado
+# .env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
