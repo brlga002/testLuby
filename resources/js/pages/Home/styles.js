@@ -24,6 +24,10 @@ export const Form = styled.div`
   min-width: 300px;
 `;
 
+export const ContainerFilter = styled.div`
+  width: 300px;
+`;
+
 Form.IconContainer = styled.div`
   flex: 1;
   height: 40px;
@@ -35,6 +39,8 @@ Form.IconContainer = styled.div`
 `;
 
 Form.InputGroup = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: row;
   background-color: #fff;
@@ -42,6 +48,7 @@ Form.InputGroup = styled.div`
   height: 40px;
   border: 1px solid #dadada;
   transition: opacity 0.2s;
+  margin: 15px 5px;
   &:hover {
     border: 1px solid ${colors.primary};
   }
@@ -57,4 +64,34 @@ Form.Input = styled.input`
   color: #99abb4;
   font-size: 16px;
   margin-left: 14px;
+`;
+
+Form.Label = styled.label`
+  position: absolute;
+  top: -13px;
+  left: 5px;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 12px;
+`;
+
+Form.Title = styled.h1`
+  font-size: 16px;
+  margin-bottom: 20px;
+`;
+
+export const ButtonStyle = styled.button`
+  flex: 1;
+  width: 100%;
+  color: #fff;
+  background-color: ${colors.primary};
+  border-radius: 5px;
+  min-height: 55px;
+  transition-delay: 1s;
+  transition: color 1s, background-color 1s;
+  border: 0 none;
+
+  &:hover {
+    filter: brightness(90%);
+  }
 `;
