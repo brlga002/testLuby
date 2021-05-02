@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import NotFound from "./NotFound";
 import NewStudent from "./NewStudent";
+import EditStudent from "./EditStudent";
 
 const PagesRoute = () => {
   // const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -24,8 +25,9 @@ const PagesRoute = () => {
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/cadastrar" component={NewStudent} />
-      {/* <Route path="/login" component={Login} />
-      <PrivateRoute path="*" component={NotFound} /> */}
+      <Route path="/editar/:id" component={EditStudent} />
+      <Route path="/login" component={Login} />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };

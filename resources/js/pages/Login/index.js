@@ -1,9 +1,90 @@
 import React from "react";
 
-// import { Container } from './styles';
+import {
+  Container,
+  ContainerAlert,
+  Title,
+  ContainerForm,
+  CardForm,
+  Form,
+  FormContainer,
+  ButtonStyle,
+  ImageBackground,
+  ContainerImage,
+} from "./styles";
+import api from "../../services/api";
+import Alert from "../../components/Alert";
+import { useHistory } from "react-router-dom";
 
-function Home() {
-    return <div>Home</div>;
+function login() {
+  const history = useHistory();
+  const [mensage, setMensage] = React.useState({});
+  const [email, setEmail] = React.useState("alan_costa@gmail.com");
+  const [password, setPassword] = React.useState("123");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.post(`/login`, { email, password });
+      const { data, status } = response;
+      const { accessToken } = data;
+      console.log("status", status);
+      console.log("accessToken", accessToken);
+      console.log("data", data);
+      if (status === 200) {
+        localStorage.setItem("token", accessToken);
+        history.push("/");
+      }
+    } catch (error) {
+      const message = error.response.data.message || "Erro ao logar";
+      setMensage({ type: "danger", text: message });
+    }
+  };
+
+  return (
+    <Container>
+      <ContainerAlert>
+        <Alert mensage={mensage} setMensage={setMensage} />
+      </ContainerAlert>
+      <ContainerForm>
+        <ContainerImage>
+          <ImageBackground />
+        </ContainerImage>
+        <Form onSubmit={handleLogin}>
+          <Title>Login</Title>
+          <CardForm>
+            <FormContainer>
+              <FormContainer.InputGroup>
+                <FormContainer.Label>E-mail*</FormContainer.Label>
+                <FormContainer.Input
+                  type="text"
+                  placeholder=""
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormContainer.InputGroup>
+            </FormContainer>
+
+            <FormContainer>
+              <FormContainer.InputGroup>
+                <FormContainer.Label>Senha*</FormContainer.Label>
+                <FormContainer.Input
+                  type="password"
+                  placeholder=""
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </FormContainer.InputGroup>
+            </FormContainer>
+
+            <ButtonStyle type="submit">Fazer login</ButtonStyle>
+          </CardForm>
+        </Form>
+      </ContainerForm>
+    </Container>
+  );
 }
 
-export default Home;
+export default login;
