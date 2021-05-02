@@ -4,8 +4,7 @@ import { colors } from "../../theme";
 export const Container = styled.div`
   background-color: ${colors.white};
   display: ${(props) => (props.show ? "flex" : "none")};
-  flex: 1;
-  max-width: 250px;
+  width: 200px;
   flex-direction: column;
 `;
 
@@ -13,10 +12,11 @@ export const Brand = styled.div`
   background-color: ${colors.white};
   display: flex;
   flex: 1;
-  max-width: 250px;
+  width: 200px;
   flex-direction: column;
   max-height: 70px;
   padding: 10px;
+  position: fixed;
 `;
 
 Brand.Title = styled.div`
@@ -28,8 +28,12 @@ Brand.SubTitle = styled.div`
 `;
 
 export const ContainerNavigation = styled.div`
+  height: 100%;
+  width: 200px;
   display: flex;
   flex: 1;
+  position: fixed;
+  top: 80px;
   flex-direction: column;
   padding: 10px;
   background-color: ${colors.primary};

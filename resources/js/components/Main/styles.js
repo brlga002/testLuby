@@ -17,6 +17,7 @@ export const NavBar = styled.div`
   height: 70px;
   box-sizing: border-box;
   font-size: 18px;
+  position: fixed;
 `;
 
 NavBar.Text = styled.div`
@@ -42,5 +43,6 @@ export const ToggleMenu = styled.div`
 `;
 
 export const Content = styled.div`
+  margin-top: 70px;
   padding: 22px;
 `;
