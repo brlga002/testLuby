@@ -13,13 +13,13 @@ function LeftPanel({ show }) {
       </Brand>
       <ContainerNavigation>
         <ContainerNavigation.Item>
-          <Link to="/login">
+          <Link to="/">
             <IoPeopleOutline size="25" /> Alunos
           </Link>
         </ContainerNavigation.Item>
 
         <ContainerNavigation.Item>
-          <Link to="/login">
+          <Link to="/cadastrar">
             <IoPersonAddOutline size="25" /> Cadastrar Aluno
           </Link>
         </ContainerNavigation.Item>
