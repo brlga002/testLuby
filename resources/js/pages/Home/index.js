@@ -1,15 +1,16 @@
 import React from "react";
 import { IoTrash, IoCreateOutline, IoCalendarOutline } from "react-icons/io5";
+import { FiFilter } from "react-icons/fi";
 
-import { Title, ContainerIcon } from "./styles";
+import { Title, ContainerIcon, Form } from "./styles";
 import ThemePage from "../../components/ThemePage";
 import { colors } from "../../theme";
 
 function Home() {
-  const alunos = [
+  const students = [
     {
       id: 1,
-      name: "gabriel fernandes",
+      name: "miguel fernandes",
       nMatricula: "1235fg",
       serie: 4,
       sexo: "masculino",
@@ -20,19 +21,56 @@ function Home() {
     {
       id: 2,
       name: "gabriel fernandes",
-      nMatricula: "1235fg",
-      serie: 4,
-      sexo: "masculino",
-      idade: 5,
-      cpf: "002.130.832-21",
-      telefone: "92 99175-5655",
+      nMatricula: "456er7",
+      serie: 5,
+      sexo: "feminino",
+      idade: 10,
+      cpf: "001.130.832-21",
+      telefone: "92 88175-5655",
     },
   ];
+  const [searchString, setSearchString] = React.useState("");
+  const [filteData, setFilteData] = React.useState(students);
+
+  function filter() {
+    const number = searchString.length;
+    const newData = students.filter(
+      (student) =>
+        `${student.id}` === searchString ||
+        student.name.substring(0, number).toLowerCase() ===
+          searchString.toLowerCase() ||
+        student.nMatricula.substring(0, number) === searchString ||
+        student.sexo.substring(0, number) === searchString ||
+        student.cpf.substring(0, number) === searchString ||
+        student.telefone.substring(0, number) === searchString
+    );
+    setFilteData(newData);
+  }
+
+  React.useEffect(() => {
+    filter();
+  }, [searchString]);
+
   return (
     <ThemePage>
-      <Title>Home</Title>
+      <Title>Listagem de alunos</Title>
 
       <div className="table-responsive">
+        <caption>
+          <Form>
+            <Form.InputGroup>
+              <Form.IconContainer>
+                <FiFilter size={25} color={colors.grey} />
+              </Form.IconContainer>
+              <Form.Input
+                type="text"
+                placeholder=""
+                value={searchString}
+                onChange={(e) => setSearchString(e.target.value)}
+              />
+            </Form.InputGroup>
+          </Form>
+        </caption>
         <table className="table">
           <thead className="thead-dark">
             <tr>
@@ -48,16 +86,16 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            {alunos.map((aluno) => (
+            {filteData.map((student) => (
               <tr>
-                <th>{aluno.id}</th>
-                <th>{aluno.name}</th>
-                <th>{aluno.nMatricula}</th>
-                <th>{aluno.serie}</th>
-                <th>{aluno.sexo}</th>
-                <th>{aluno.idade}</th>
-                <th>{aluno.cpf}</th>
-                <th>{aluno.telefone}</th>
+                <th>{student.id}</th>
+                <th>{student.name}</th>
+                <th>{student.nMatricula}</th>
+                <th>{student.serie}</th>
+                <th>{student.sexo}</th>
+                <th>{student.idade}</th>
+                <th>{student.cpf}</th>
+                <th>{student.telefone}</th>
                 <th>
                   <ContainerIcon>
                     <IoCalendarOutline size={25} color={colors.primary} />
