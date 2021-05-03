@@ -1,4 +1,5 @@
 import React from "react";
+import { getState } from "redux-localstore";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Home from "./Home";
@@ -6,26 +7,30 @@ import Login from "./Login";
 import NotFound from "./NotFound";
 import NewStudent from "./NewStudent";
 import EditStudent from "./EditStudent";
+import Logout from "./Logout";
 
 const PagesRoute = () => {
-  // const PrivateRoute = ({ component: Component, ...rest }) => {
-  //   const autenticate = true;
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+    const state = getState();
+    if (Object.entries(state).length === 0) return <Redirect to="/login" />;
+    const { autenticate } = state.auth;
 
-  //   return (
-  //     <Route
-  //       {...rest}
-  //       render={(props) =>
-  //         autenticate ? <Component {...props} /> : <Redirect to="/login" />
-  //       }
-  //     />
-  //   );
-  // };
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          autenticate ? <Component {...props} /> : <Redirect to="/login" />
+        }
+      />
+    );
+  };
 
   return (
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/cadastrar" component={NewStudent} />
-      <Route path="/editar/:id" component={EditStudent} />
+      <PrivateRoute path="/" exact component={Home} />
+      <PrivateRoute path="/cadastrar" component={NewStudent} />
+      <PrivateRoute path="/editar/:id" component={EditStudent} />
+      <Route path="/logout" component={Logout} />
       <Route path="/login" component={Login} />
       <Route path="*" component={NotFound} />
     </Switch>
