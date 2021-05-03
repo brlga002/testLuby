@@ -38,7 +38,7 @@ $ git clone git@github.com:brlga002/luby.git
 # Acesse a pasta do projeto no terminal/cmd
 $ cd luby
 
-# inicie o servedor
+# inicie os containers
 $ docker-compose up -d
 
 # instale as dependencias
