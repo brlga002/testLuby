@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
+import InputMask from "react-input-mask";
 
 import { Title, CardForm, Form, FormContainer, ButtonStyle } from "./styles";
 import ThemePage from "../../components/ThemePage";
@@ -136,14 +137,15 @@ function EditStudent() {
           <FormContainer>
             <FormContainer.InputGroup>
               <FormContainer.Label>CPF</FormContainer.Label>
-              <FormContainer.Input
-                type="text"
-                placeholder=""
+              <InputMask
                 required
+                className="form-control"
+                mask="999.999-999-99"
+                alwaysShowMask={false}
                 value={dataSend.cpf}
-                onChange={(e) =>
-                  setDataSend({ ...dataSend, cpf: e.target.value })
-                }
+                onChange={(e) => {
+                  setDataSend({ ...dataSend, cpf: e.target.value });
+                }}
               />
             </FormContainer.InputGroup>
 
@@ -162,14 +164,15 @@ function EditStudent() {
 
             <FormContainer.InputGroup>
               <FormContainer.Label>Telefone</FormContainer.Label>
-              <FormContainer.Input
-                type="text"
-                placeholder=""
+              <InputMask
                 required
+                className="form-control"
+                mask="(99) 99999-9999"
+                alwaysShowMask={false}
                 value={dataSend.telefone}
-                onChange={(e) =>
-                  setDataSend({ ...dataSend, telefone: e.target.value })
-                }
+                onChange={(e) => {
+                  setDataSend({ ...dataSend, telefone: e.target.value });
+                }}
               />
             </FormContainer.InputGroup>
           </FormContainer>
@@ -179,14 +182,15 @@ function EditStudent() {
           <FormContainer>
             <FormContainer.InputGroup>
               <FormContainer.Label>CEP</FormContainer.Label>
-              <FormContainer.Input
-                type="text"
-                placeholder=""
+              <InputMask
                 required
+                className="form-control"
+                mask="99999999"
+                alwaysShowMask={false}
                 value={dataSend.cep}
-                onChange={(e) =>
-                  setDataSend({ ...dataSend, cep: e.target.value })
-                }
+                onChange={(e) => {
+                  setDataSend({ ...dataSend, cep: e.target.value });
+                }}
               />
               <FormContainer.IconContainer
                 onClick={() => {
