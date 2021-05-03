@@ -41,10 +41,7 @@ $ cd luby
 # inicie os containers
 $ docker-compose up -d
 
-# instale as dependencias
-php composer.phar install
-
-# rode o sh da migration e seed
+# rode o sh das dependencias migration e seed
 docker exec -it academico-app sh migrate.sh
 
 # O servidor inciará na porta:8000 - acesse http://localhost:8000
