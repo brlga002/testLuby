@@ -5,7 +5,7 @@ const headers = async () => {
   return { Authorization: `Bearer ${token}` };
 };
 
-const url = "http://localhost:7777/api";
+const url = "http://localhost:8000/api";
 
 const api = axios.create({
   baseURL: url,
