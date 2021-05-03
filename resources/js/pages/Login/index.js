@@ -22,7 +22,7 @@ function login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [mensage, setMensage] = React.useState({});
-  const [email, setEmail] = React.useState("alan_costa@gmail.com");
+  const [email, setEmail] = React.useState("gabriel@luby.com.br");
   const [password, setPassword] = React.useState("123");
 
   const handleLogin = async (e) => {
@@ -31,9 +31,7 @@ function login() {
       const response = await api.post(`/login`, { email, password });
       const { data, status } = response;
       const { accessToken } = data;
-      console.log("status", status);
-      console.log("accessToken", accessToken);
-      console.log("data", data);
+
       if (status === 200) {
         localStorage.setItem("token", accessToken);
         dispatch(actionAuth.setAuth({ autenticate: true }));
