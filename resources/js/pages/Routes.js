@@ -4,7 +4,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import Home from "./Home";
 import Login from "./Login";
-import NotFound from "./NotFound";
 import NewStudent from "./NewStudent";
 import EditStudent from "./EditStudent";
 import Logout from "./Logout";
@@ -32,7 +31,7 @@ const PagesRoute = () => {
       <PrivateRoute path="/editar/:id" component={EditStudent} />
       <Route path="/logout" component={Logout} />
       <Route path="/login" component={Login} />
-      <Route path="*" component={NotFound} />
+      <Route path="*" component={Login} />
     </Switch>
   );
 };
