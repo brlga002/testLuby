@@ -35,7 +35,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Além disso é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-## Rodando o Back End
+## Rodando com Docker Compose
 
 ```bash
 # Clone este repositório
@@ -43,6 +43,41 @@ $ git clone git@github.com:brlga002/luby.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd luby
+
+# inicie o servedor
+$ cd docker-compose up -d
+
+# rode o sh da migration e seed
+docker exec -it academico-app sh migrate.sh
+
+# O servidor inciará na porta:8000 - acesse http://localhost:8000
+```
+
+## Rodando com sem Docker Compose
+
+No arquivo .env não esqueça das variáveis:
+
+DB_HOST=
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+
+```bash
+# Clone este repositório
+$ git clone git@github.com:brlga002/luby.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd luby
+
+# rode as migrações
+$ php artisan migrate
+
+# semeie o banco de dados com registros
+$ php artisan db:seed
+
+# inicie o servedor
+$ php artisan serve
 
 # O servidor inciará na porta:8000 - acesse http://localhost:8000
 ```
@@ -55,6 +90,8 @@ A utilização da arquitetura REST, portanto, permite a comunicação entre apli
 
 O cliente faz requisições REST ao servidor. Esse processo é repetido diversas vezes em um período de navegação. Cada nova URL aberta ou formulário submetido refaz as etapas que descrevemos. Dessa forma, esses elementos permitem a criação de aplicações web, desenhando a forma como navegamos na internet.
 
+As rotas privadas esperam um Bearer Token no header da requisição.
+
 Referência:https://www.totvs.com/blog/developers/rest
 
 ## Tecnologias
@@ -62,6 +99,7 @@ Referência:https://www.totvs.com/blog/developers/rest
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Laravel](https://laravel.com/)
+- [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum#api-token-authentication)
 - [Reactjs](https://pt-br.reactjs.org/)
 - [Docker](https://docs.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
