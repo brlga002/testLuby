@@ -1,5 +1,9 @@
 import React from "react";
-import { IoPeopleOutline, IoPersonAddOutline } from "react-icons/io5";
+import {
+  IoPeopleOutline,
+  IoPersonAddOutline,
+  IoExitOutline,
+} from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 import { Container, Brand, ContainerNavigation } from "./styles";
@@ -21,6 +25,12 @@ function LeftPanel({ show }) {
         <ContainerNavigation.Item>
           <Link to="/cadastrar">
             <IoPersonAddOutline size="25" /> Cadastrar Aluno
+          </Link>
+        </ContainerNavigation.Item>
+
+        <ContainerNavigation.Item>
+          <Link to="/logout">
+            <IoExitOutline size="25" /> Sair
           </Link>
         </ContainerNavigation.Item>
       </ContainerNavigation>

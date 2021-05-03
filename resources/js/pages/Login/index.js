@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Creators as actionAuth } from "../../store/ducks/auth";
 
 import {
   Container,
@@ -14,9 +17,9 @@ import {
 } from "./styles";
 import api from "../../services/api";
 import Alert from "../../components/Alert";
-import { useHistory } from "react-router-dom";
 
 function login() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [mensage, setMensage] = React.useState({});
   const [email, setEmail] = React.useState("alan_costa@gmail.com");
@@ -33,6 +36,7 @@ function login() {
       console.log("data", data);
       if (status === 200) {
         localStorage.setItem("token", accessToken);
+        dispatch(actionAuth.setAuth({ autenticate: true }));
         history.push("/");
       }
     } catch (error) {
