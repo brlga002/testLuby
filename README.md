@@ -29,12 +29,6 @@ Além de gerenciar o cadastro o administrador deve
 : atribuir uma nota geral em uma segunda área no sistema que
 se for superior a 5 deve mostrar aprovado do contrário reprovado.
 
-## Pré-requisitos
-
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-Além disso é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-
 ## Rodando com Docker Compose
 
 ```bash
