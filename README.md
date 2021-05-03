@@ -39,7 +39,10 @@ $ git clone git@github.com:brlga002/luby.git
 $ cd luby
 
 # inicie o servedor
-$ cd docker-compose up -d
+$ docker-compose up -d
+
+# instale as dependencias
+php composer.phar install
 
 # rode o sh da migration e seed
 docker exec -it academico-app sh migrate.sh
@@ -63,6 +66,9 @@ $ git clone git@github.com:brlga002/luby.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd luby
+
+# instale as dependencias
+php composer.phar install
 
 # rode as migrações
 $ php artisan migrate
