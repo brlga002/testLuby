@@ -11,10 +11,6 @@ import { Container, Brand, ContainerNavigation } from "./styles";
 function LeftPanel({ show }) {
   return (
     <Container show={show}>
-      <Brand>
-        <Brand.Title>Modulo Acadêmico</Brand.Title>
-        <Brand.SubTitle>Luby</Brand.SubTitle>
-      </Brand>
       <ContainerNavigation>
         <ContainerNavigation.Item>
           <Link to="/">

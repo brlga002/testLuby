@@ -2,21 +2,20 @@ import styled from "styled-components";
 import { colors } from "../../theme";
 
 export const Container = styled.div`
-  background-color: ${colors.white};
+  background-color: ${colors.secondary};
   display: ${(props) => (props.show ? "flex" : "none")};
   width: 200px;
   flex-direction: column;
 `;
 
 export const Brand = styled.div`
-  background-color: ${colors.white};
+  background-color: ${colors.secondary};
   display: flex;
   flex: 1;
   width: 200px;
   flex-direction: column;
   max-height: 70px;
   padding: 10px;
-  position: fixed;
 `;
 
 Brand.Title = styled.div`
@@ -32,12 +31,12 @@ export const ContainerNavigation = styled.div`
   width: 200px;
   display: flex;
   flex: 1;
-  position: fixed;
-  top: 80px;
+  top: 70px;
   flex-direction: column;
   padding: 10px;
   background-color: ${colors.primary};
-  border-radius: 0 40px 0 0;
+  position: fixed;
+  z-index: 1;
 `;
 
 ContainerNavigation.Item = styled.div`

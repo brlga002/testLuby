@@ -18,6 +18,7 @@ export const NavBar = styled.div`
   box-sizing: border-box;
   font-size: 18px;
   position: fixed;
+  z-index: 1;
 `;
 
 NavBar.Text = styled.div`
