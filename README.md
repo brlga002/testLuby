@@ -39,7 +39,7 @@ $ git clone git@github.com:brlga002/luby.git
 $ cd luby
 
 # inicie o servedor
-$ cd docker-compose up -d
+$ docker-compose up -d
 
 # rode o sh da migration e seed
 docker exec -it academico-app sh migrate.sh
